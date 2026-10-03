@@ -1,0 +1,597 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: #050a11;
+  color: #edf6ff;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+}
+
+.app {
+  width: min(1500px, 100%);
+  margin: auto;
+  padding: 18px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.topbar {
+  margin-bottom: 18px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  width: 54px;
+  height: 54px;
+  border-radius: 15px;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 30px;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #315d8b,
+      #10243b 65%,
+      #08101b
+    );
+
+  border: 1px solid #29435f;
+  box-shadow: 0 10px 35px rgba(0,0,0,.3);
+}
+
+h1 {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: 2px;
+}
+
+.brand p {
+  margin: 3px 0 0;
+  color: #71869d;
+  font-size: 12px;
+}
+
+
+/* =========================
+   LAYOUT
+========================= */
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(340px, .75fr);
+  gap: 18px;
+}
+
+.card {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(20,35,53,.92),
+      rgba(8,16,27,.96)
+    );
+
+  border: 1px solid #20354c;
+  border-radius: 20px;
+  box-shadow:
+    0 18px 60px rgba(0,0,0,.28);
+
+  overflow: hidden;
+}
+
+.section-title {
+  height: 54px;
+  padding: 0 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #1c3045;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.7px;
+  color: #8fa9c2;
+}
+
+.drag-tip,
+.table-tip {
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #526b83;
+}
+
+
+/* =========================
+   CANVAS
+========================= */
+
+.canvas-wrap {
+  height: 520px;
+  position: relative;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #0c1e34 0%,
+      #07111e 50%,
+      #040910 100%
+    );
+}
+
+#atomCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.particle-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding: 12px;
+}
+
+.stat {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 11px;
+  border-radius: 12px;
+
+  background: rgba(255,255,255,.025);
+  border: 1px solid #182d42;
+}
+
+.stat .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+
+.proton .dot {
+  background: #ff6878;
+}
+
+.neutron .dot {
+  background: #cbd3de;
+}
+
+.electron .dot {
+  background: #62b6ff;
+}
+
+.charge .dot {
+  background: #b48cff;
+}
+
+.stat small {
+  display: block;
+  font-size: 8px;
+  color: #637b92;
+  letter-spacing: 1px;
+}
+
+.stat strong {
+  font-size: 19px;
+}
+
+
+/* =========================
+   CONTROLS
+========================= */
+
+.controls {
+  padding: 4px 12px 14px;
+}
+
+.control-row {
+  min-height: 58px;
+
+  display: grid;
+  grid-template-columns: 1fr 42px 48px 42px;
+  gap: 8px;
+  align-items: center;
+
+  padding: 7px 10px;
+
+  border-top: 1px solid #172a3e;
+}
+
+.control-row b {
+  display: block;
+  font-size: 13px;
+}
+
+.control-row span {
+  display: block;
+  color: #587089;
+  font-size: 10px;
+  margin-top: 2px;
+}
+
+.control-row button {
+  width: 42px;
+  height: 38px;
+
+  border: 1px solid #29445f;
+  border-radius: 10px;
+
+  background: #0d1d2e;
+  color: #d8ebff;
+
+  font-size: 20px;
+
+  cursor: pointer;
+  transition: .15s;
+}
+
+.control-row button:hover {
+  background: #17304b;
+  border-color: #3b6387;
+}
+
+.control-row button:active {
+  transform: scale(.94);
+}
+
+.control-row output {
+  text-align: center;
+  font-weight: 800;
+}
+
+
+/* =========================
+   INFORMATION
+========================= */
+
+.info-card {
+  padding-bottom: 18px;
+}
+
+.element-heading {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px;
+  border-bottom: 1px solid #1b2e43;
+}
+
+.big-symbol {
+  width: 82px;
+  height: 82px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 18px;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #345d87,
+      #11263e 70%
+    );
+
+  border: 1px solid #315372;
+
+  font-size: 34px;
+  font-weight: 900;
+}
+
+.element-heading h2 {
+  margin: 0 0 5px;
+  font-size: 24px;
+}
+
+.element-heading p {
+  margin: 0;
+  color: #69839d;
+  font-size: 12px;
+}
+
+
+/* =========================
+   ANALYSIS BOXES
+========================= */
+
+.analysis-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  padding: 14px;
+}
+
+.info-box {
+  min-height: 78px;
+
+  padding: 13px;
+
+  background: rgba(255,255,255,.025);
+  border: 1px solid #1a3046;
+  border-radius: 13px;
+}
+
+.info-box.wide {
+  grid-column: 1 / -1;
+}
+
+.info-box small {
+  display: block;
+  color: #617b94;
+  font-size: 8px;
+  letter-spacing: 1.3px;
+  margin-bottom: 6px;
+}
+
+.info-box strong {
+  display: block;
+  font-size: 15px;
+}
+
+.info-box span {
+  display: block;
+  color: #718aa2;
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+
+/* =========================
+   LOGIC
+========================= */
+
+.logic-panel {
+  margin: 0 14px;
+
+  border: 1px solid #1a3046;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.logic-title {
+  padding: 11px 13px;
+
+  background: #0d1c2c;
+
+  color: #7f9bb5;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.logic-row {
+  min-height: 38px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 7px 13px;
+
+  border-top: 1px solid #172a3d;
+
+  font-size: 11px;
+}
+
+.logic-row span {
+  color: #668098;
+}
+
+.logic-row b {
+  text-align: right;
+  color: #d9eaff;
+}
+
+
+/* =========================
+   PERIODIC TABLE
+========================= */
+
+.periodic-card {
+  margin-top: 18px;
+}
+
+.periodic-table {
+  padding: 14px;
+
+  display: grid;
+  grid-template-columns: repeat(18, minmax(28px, 1fr));
+  gap: 4px;
+
+  overflow-x: auto;
+}
+
+.element {
+  min-width: 28px;
+  min-height: 47px;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid #1b334a;
+  border-radius: 6px;
+
+  background: #0b1725;
+
+  cursor: pointer;
+
+  transition:
+    transform .12s,
+    background .12s,
+    border-color .12s;
+}
+
+.element:hover {
+  transform: translateY(-2px);
+  border-color: #47749c;
+}
+
+.element.active {
+  background: #17456d;
+  border-color: #65b9ff;
+  box-shadow:
+    0 0 15px rgba(75,170,255,.25);
+}
+
+.element-number {
+  position: absolute;
+  top: 3px;
+  left: 4px;
+
+  font-size: 6px;
+  color: #52718b;
+}
+
+.element-symbol {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+
+/*
+  Put elements in chemically recognizable
+  periodic-table positions.
+*/
+
+.element:nth-child(1)  { grid-column: 1; grid-row: 1; }
+.element:nth-child(2)  { grid-column: 18; grid-row: 1; }
+
+.element:nth-child(3)  { grid-column: 1; grid-row: 2; }
+.element:nth-child(4)  { grid-column: 2; grid-row: 2; }
+.element:nth-child(5)  { grid-column: 13; grid-row: 2; }
+.element:nth-child(6)  { grid-column: 14; grid-row: 2; }
+.element:nth-child(7)  { grid-column: 15; grid-row: 2; }
+.element:nth-child(8)  { grid-column: 16; grid-row: 2; }
+.element:nth-child(9)  { grid-column: 17; grid-row: 2; }
+.element:nth-child(10) { grid-column: 18; grid-row: 2; }
+
+.element:nth-child(11) { grid-column: 1; grid-row: 3; }
+.element:nth-child(12) { grid-column: 2; grid-row: 3; }
+.element:nth-child(13) { grid-column: 13; grid-row: 3; }
+.element:nth-child(14) { grid-column: 14; grid-row: 3; }
+.element:nth-child(15) { grid-column: 15; grid-row: 3; }
+.element:nth-child(16) { grid-column: 16; grid-row: 3; }
+.element:nth-child(17) { grid-column: 17; grid-row: 3; }
+.element:nth-child(18) { grid-column: 18; grid-row: 3; }
+
+.element:nth-child(n+19):nth-child(-n+36) {
+  grid-row: 4;
+}
+
+.element:nth-child(n+37):nth-child(-n+54) {
+  grid-row: 5;
+}
+
+.element:nth-child(n+55):nth-child(-n+86) {
+  grid-row: 6;
+}
+
+.element:nth-child(n+87):nth-child(-n+118) {
+  grid-row: 7;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  text-align: center;
+  padding: 22px 0 8px;
+
+  color: #536b82;
+  font-size: 11px;
+}
+
+footer strong {
+  color: #86a9c7;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .canvas-wrap {
+    height: 470px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .app {
+    padding: 9px;
+  }
+
+  .canvas-wrap {
+    height: 390px;
+  }
+
+  .particle-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .analysis-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-box.wide {
+    grid-column: auto;
+  }
+
+  .periodic-table {
+    min-width: 700px;
+  }
+
+  .table-tip {
+    display: none;
+  }
+
+  .drag-tip {
+    font-size: 9px;
+  }
+}
