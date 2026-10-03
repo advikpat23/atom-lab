@@ -1,0 +1,212 @@
+
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">⚛</div>
+      <div>
+        <h1>ATOM BUILDER</h1>
+        <p>Build an atom • Explore its chemistry</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+
+    <!-- ATOM VIEW -->
+    <section class="card atom-card">
+
+      <div class="section-title">
+        <span>ATOM VIEW</span>
+        <span class="drag-tip">Drag to rotate</span>
+      </div>
+
+      <div class="canvas-wrap">
+        <canvas id="atomCanvas"></canvas>
+      </div>
+
+      <div class="particle-stats">
+
+        <div class="stat proton">
+          <span class="dot"></span>
+          <div>
+            <small>PROTONS</small>
+            <strong id="pCount">0</strong>
+          </div>
+        </div>
+
+        <div class="stat neutron">
+          <span class="dot"></span>
+          <div>
+            <small>NEUTRONS</small>
+            <strong id="nCount">0</strong>
+          </div>
+        </div>
+
+        <div class="stat electron">
+          <span class="dot"></span>
+          <div>
+            <small>ELECTRONS</small>
+            <strong id="eCount">0</strong>
+          </div>
+        </div>
+
+        <div class="stat charge">
+          <span class="dot"></span>
+          <div>
+            <small>CHARGE</small>
+            <strong id="chargeDisplay">0</strong>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="controls">
+
+        <div class="control-row">
+          <div>
+            <b>Protons</b>
+            <span>Determines the element</span>
+          </div>
+
+          <button onclick="changeParticle('p',-1)">−</button>
+          <output id="pControl">0</output>
+          <button onclick="changeParticle('p',1)">+</button>
+        </div>
+
+        <div class="control-row">
+          <div>
+            <b>Neutrons</b>
+            <span>Changes the isotope</span>
+          </div>
+
+          <button onclick="changeParticle('n',-1)">−</button>
+          <output id="nControl">0</output>
+          <button onclick="changeParticle('n',1)">+</button>
+        </div>
+
+        <div class="control-row">
+          <div>
+            <b>Electrons</b>
+            <span>Controls the ion charge</span>
+          </div>
+
+          <button onclick="changeParticle('e',-1)">−</button>
+          <output id="eControl">0</output>
+          <button onclick="changeParticle('e',1)">+</button>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- INFORMATION -->
+    <section class="card info-card">
+
+      <div class="section-title">
+        <span>ATOM ANALYSIS</span>
+      </div>
+
+      <div class="element-heading">
+        <div class="big-symbol" id="elementSymbol">—</div>
+
+        <div>
+          <h2 id="elementName">No element</h2>
+          <p id="massNumber">Mass number: —</p>
+        </div>
+      </div>
+
+
+      <div class="analysis-grid">
+
+        <div class="info-box">
+          <small>ISOTOPE</small>
+          <strong id="isotopeName">—</strong>
+        </div>
+
+        <div class="info-box">
+          <small>ION TYPE</small>
+          <strong id="ionType">Neutral atom</strong>
+          <span id="ionDetail">Charge: 0</span>
+        </div>
+
+        <div class="info-box wide">
+          <small>ELECTRON CONFIGURATION</small>
+          <strong id="shellDisplay">—</strong>
+          <span id="shellDetail">K • L • M • N • O • P • Q</span>
+        </div>
+
+        <div class="info-box wide">
+          <small>VALENCE ELECTRONS</small>
+          <strong id="valenceDisplay">—</strong>
+          <span id="valenceDetail">—</span>
+        </div>
+
+        <div class="info-box wide classification-box">
+          <small>CHEMICAL CLASSIFICATION</small>
+          <strong id="classification">—</strong>
+          <span id="classificationDetail">—</span>
+        </div>
+
+        <div class="info-box radioactive-box wide">
+          <small>NUCLEAR STABILITY</small>
+          <strong id="radioactivity">—</strong>
+          <span id="radioactivityDetail">—</span>
+        </div>
+
+      </div>
+
+
+      <div class="logic-panel">
+
+        <div class="logic-title">
+          CHEMISTRY LOGIC
+        </div>
+
+        <div class="logic-row">
+          <span>Atomic number</span>
+          <b id="atomicNumberInfo">—</b>
+        </div>
+
+        <div class="logic-row">
+          <span>Neutron / proton ratio</span>
+          <b id="npRatio">—</b>
+        </div>
+
+        <div class="logic-row">
+          <span>Outer shell</span>
+          <b id="outerShell">—</b>
+        </div>
+
+        <div class="logic-row">
+          <span>Likely bonding behavior</span>
+          <b id="bondingBehavior">—</b>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- PERIODIC TABLE -->
+
+  <section class="card periodic-card">
+
+    <div class="section-title">
+      <span>PERIODIC TABLE</span>
+      <span class="table-tip">Click to highlight • Does not change your atom</span>
+    </div>
+
+    <div id="periodicTable" class="periodic-table"></div>
+
+  </section>
+
+
+  <footer>
+    Made by <strong>Advikpat23</strong> ⚛️
+  </footer>
+
+</div>
